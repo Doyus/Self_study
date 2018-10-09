@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+
+<body>
+<center>
+<form action="http://localhost:9999/shop/test1/" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+
+    小分类：<input type="text" name="name" id='first'><br>
+    描述  : <input type="text" name="desc" id='second'><br>
+    所属大分类: <select id="list" name="list" onchange="get()">
+     {% for i in list %}
+        <option value="{{ i.id }}" id="n" name="bid" >{{ i.name }}</option>
+     {% endfor %}
+    </select><br>
+    <input type="text" id='vvv' name='l'>
+    <input type="submit" value="提交">
+    <div id="myDiv"></div>
+</form>
+</center>
+<script type="text/javascript">
+function get(){
+var obj=document.getElementById('n');
+var obj1=document.getElementById('vvv');
+    obj1.value=obj.value;
+
+    console.log(obj.value)
+
+}
+// var x = document.getElementById('first').value
+// var y = document.getElementById('second').value
+// var z = document.getElementById('z').value
+
+ // function sub(){
+ //             // var xhr = new XMLHttpRequest();
+ //             function getXhr () {
+ //                try{
+ //                    return new XMLHttpRequest();
+ //                }catch(e){
+ //                    try{
+ //                        return new ActiveXObject("Msxml2.XMLHTTP")
+ //                    }catch(e){
+ //                        try{
+ //                            return new ActiveXObject("Microsoft.XMLHTTP")
+ //                        }catch(e){
+ //                            alter('请更换浏览器')
+ //                            throw e;
+ //                        }
+ //                    }
+ //                }
+ //            }
+ //            "user="+username+"&pwd="+password
+ //            var xhr = getXhr();
+ //            // xhr.open('GET','http://localhost:9999/blog/ajax')
+ //            xhr.open('POST','http://localhost:9999/shop/test');
+ //            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ //            xhr.send('name='+x+'&desc='+y+'&bid='+z);
+ //            // xhr.send()
+ //            xhr.onreadystatechange=function()
+ //                {
+ //                    if (xhr.readyState==4 && xhr.status==200);
+ //                    {
+ //                        document.getElementById("myDiv").innerHTML=xhr.responseText;
+ //                        // console.log(JSON.parse(xhr.responseText).name);
+ //                    }
+ //                }
+ //        }
+
+</script>
+
+</body>
+</html>

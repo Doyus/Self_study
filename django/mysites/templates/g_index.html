@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>index</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<center>
+
+            {% csrf_token %}
+            <h1>{{ name }}登陆成功!,您在{{ time }}登陆</h1>
+
+            <h3>管理员用户SHOW!!!!!!!!!</h3>
+            <br>
+
+
+    <hr border='2'>
+     <table border="1" width="400">
+
+
+                <caption></caption>
+                <tbody>
+                <tr>
+                        <td>ID</td><td>姓名</td><td>性别</td><td>年龄</td><td>密码</td>
+                    <td>删除?</td><td>修改?</td></tr>
+                    {% for i in list %}
+
+                        <tr>
+                        <td name="idd">{{ i.id }}</td>
+                        <td contenteditable="true" name='name'>{{ i.nameb }}</td>
+                        <td contenteditable="true" name='sex'>{{ i.sex }}</td>
+                        <td contenteditable="true" name='age'>{{ i.age }}</td>
+                        <td contenteditable="true" name='pwd'>{{ i.pwd }}</td>
+                        <td><a href="http://localhost:9999/blog/g_del?idd={{ i.id }}">删除</a></td>
+                        <td><a href="http://localhost:9999/blog/g_xiugai?idd={{ i.id }}">修改</a></td>
+                        </tr>
+
+
+                    {% endfor %}
+
+                </tbody>
+                <tr><td colspan="6">**********************************************</td></tr>
+                <tr>
+                <td colspan="3"></td>
+
+                  <td><a href="http://localhost:9999/blog/g_index?p=s">上一页</a></td>
+                  <td>{{ now_count }} / {{ total }}</td>
+                  <td><a href="http://localhost:9999/blog/g_index?p=x">下一页</a></td>
+
+                </tr>
+            </table>
+            <h3><a href="">添加用户>>></a></h3>
+    <form action="{% url 'xxx' %}" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+                <table border="1" width="400" >
+                 <tr>
+                        <td>姓名</td><td>性别</td><td>年龄</td><td>密码</td>
+
+                 </tr>
+                 <tr>
+                        <td><input type="text" name="namex"></td><td><input type="text" name="sexx"></td><td><input type="text" name="agex"></td><td><input type="text" name="pwdx"></td>
+                 </tr>
+                  <tr><td colspan="4" style="text-align: center;"><input type="submit" value="提交"></td></tr>
+            </table>
+    </form>
+    <!-- <h3><a href="">输入id值，查询用户信息>>></a></h3>
+    <input type="text" name="find" placeholder="输入查询id"><a href="点击查询"></a>
+    <table border="1" width="400" >
+                 <tr>
+                        <td>id</td><td>姓名</td><td>性别</td><td>年龄</td><td>密码</td>
+
+                 </tr>
+                 <tr>
+                        <td name="idd">{{ idq }}</td>
+                        <td contenteditable="true" name='name'>{{ nameq }}</td>
+                        <td contenteditable="true" name='sex'>{{ sexq }}</td>
+                        <td contenteditable="true" name='age'>{{ ageq }}</td>
+                        <td contenteditable="true" name='pwd'>{{ pwdq }}</td>
+                        <td><a href="http://localhost:9999/blog/g_del?idd={{ idq }}">删除</a></td>
+                        </tr>
+                  <tr><td colspan="5" style="text-align: center;"><input type="submit" value="提交"></td></tr>
+            </table> -->
+   <!--  <h3><a href="">输入id值，修改用户信息>>></a></h3>
+    <form action="{% url 'xiugai' %}" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+                <table border="1" width="400" >
+                 <tr>
+                        <td>id</td><td>姓名</td><td>性别</td><td>年龄</td><td>密码</td>
+
+                 </tr>
+                 <tr>
+                        <td><input type="text" name="idd">
+                        <td><input type="text" name="namex"></td><td><input type="text" name="sexx"></td><td><input type="text" name="agex"></td><td><input type="text" name="pwdx"></td>
+                 </tr>
+                  <tr><td colspan="5" style="text-align: center;"><input type="submit" value="提交"></td></tr>
+            </table>
+    </form> -->
+
+</center>
+</body>
+</html>

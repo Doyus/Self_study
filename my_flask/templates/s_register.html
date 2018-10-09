@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<center>
+		<form action="http://localhost:5000/register" method="post">
+			账户名：<input id="name" type="text" name="name" placeholder="请填写账户名" /><br>
+
+			密码：<input id="password1" type="password" name="pwd" placeholder="请填写密码"/><br />
+			年龄: <input id="age" type="text" name="age" placeholder="请填写年龄"/><br />
+			确认密码：<input id="password2" type="password" name="password2" placeholder="请确认密码"/><br />
+			<input type="submit" value="注册"/>
+			<br>
+			<span id="error" style="color: red;"></span><br />
+
+		</form>
+
+	</center>
+		<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				// $('#name').change(function(){
+				// 	if($("#name").val().length==0){
+				// 		$('#error').text("请填写账户名");
+				// 	}
+				// });
+				// $('#password1').change(function(){
+				// 	if($("#password1").val().length==0){
+				// 		$('#error').text("请填写密码");
+				// 	}
+				// });
+				// $('#age').change(function(){
+				// 	if($("#age").val().length==0){
+				// 		$('#error').text("请填写年龄");
+				// 	}
+				// });
+				// $('#password2').change(function(){
+				// 	if($("#password2").val()!=$("#password2").val()){
+				// 		$('#error').text("两次输入值不相同");
+				// 	}
+				// });
+
+				$("form").click(function(e){
+					var error = $("#error");
+					if($("#name").val().length==0){
+						error.text("请填写账户名");
+						e.preventDefault();
+					}else if($("#password1").val().length==0){
+							error.text("请填写密码");
+						e.preventDefault();
+					}else if($("#password1").val()!=$("#password2").val()){
+						error.text("两次密码 不一致");
+						e.preventDefault();
+					}else if(false){
+						//在这里使用ajax判断，是否与数据可中的参数名相同，相同不予许登录
+					}else{
+						console.log('aaaaa')
+					}
+
+				});
+			});
+			 //  $(document).ready(function(){
+    //    $("form").submit(function(e){
+    //        var name = $("#name").val();
+    //        var pwd = $("#pwd").val();
+    //        var pwd1 = $("#pwd1").val();
+    //        if(name.length == 0){
+    //            $("#span1").text("请输入用户名");
+    //            e.preventDefault();
+    //        }else if(pwd.length == 0){
+    //            $("#span2").text("请输入密码");
+    //            e.preventDefault();
+    //        }else if(pwd != pwd1){
+    //            $("#span3").text("密码不相同");
+    //            e.preventDefault();
+    //        }else{
+    //            $.post("register_page_ajax",{
+    //                name:name,
+    //                pwd:pwd,
+    //            },function (responseText) {
+    //                console.log(responseText);
+    //                if (responseText.trim() == "True"){
+    //                    e.preventDefault();
+    //                    $("#span1").text('已经注册');
+    //                    {#alert(responseText);#}
+
+
+    //                }else{
+    //                    alert("注册成功");
+    //                }
+    //            })
+    //        }
+    //        return false;
+    //    });
+
+    // });
+
+</script>
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>111111111</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<center>
+
+            <table cellpadding="24" align="center">
+
+                <tbody>
+                    <h1>管理员登陆</h1>
+                    <tr>
+                        <td>用户名:</td><td><input type="text" id='name1' name="name" placeholder="请输入用户名" onblur="aaa()"</td>
+                    </tr>
+                    <tr>
+                        <td>密码:</td><td><input type="password" name="pwd" placeholder="请输入密码"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="submit" name="tijiao" value='登陆'>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost:9999/blog/g_regist">还未注册？<small>点我注册</small></a>
+<script type="text/javascript">
+
+
+                function aaa(){
+             var xhr = new XMLHttpRequest();
+            function getXhr () {
+                try{
+                    return new XMLHttpRequest();
+                }catch(e){
+                    try{
+                        return new ActiveXObject("Msxml2.XMLHTTP")
+                    }catch(e){
+                        try{
+                            return new ActiveXObject("Microsoft.XMLHTTP")
+                        }catch(e){
+                            alter('请更换浏览器')
+                            throw e;
+                        }
+                    }
+                }
+            }
+            var xhr = getXhr();
+            // xhr.open('GET','http://localhost:9999/blog/ajax')
+            a = document.getElementById('name1').value;
+            xhr.open('POST','http://localhost:9999/blog/ajax');
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.send(a);
+            // xhr.send()
+            xhr.onreadystatechange=function()
+                {
+                    if (xhr.readyState==4 && xhr.status==200);
+                    {
+                        document.getElementById("myDiv").innerHTML=xhr.responseText;
+                        // console.log(JSON.parse(xhr.responseText).name);
+                    }
+                }
+        }
+            </script>
+    <h1 id="myDiv"></h1>
+
+</center>
+</body>
+</html>
