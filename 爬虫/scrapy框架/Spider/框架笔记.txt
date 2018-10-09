@@ -1,0 +1,25 @@
+1. items.py 用来存放爬虫爬取下来的模型
+2. middlewares.py 用来存放各种中间件
+3. pipelines.py 用来将items的模型储存到本地磁盘
+4. settings.py 本爬虫的一些配置信息(比如请求头，多久发送一次请求，ip戴笠代理池)
+5. scray.cfg 项目的配置文件
+6. spider包 以后所有的爬虫都是存放在这个里面
+
+
+** 常用命令
+
+1. 新建一个工程:
+scrapy startproject spider_name
+2. 查看当前项目内有多少爬虫：
+scrapy list
+3. 使用浏览器打开网页:
+scrapy view http://www.baidu.com
+4. 直接运行创建的爬虫不会运行整个项目:
+scrapy runspider 爬虫名称
+5. 命令来创建scrapy爬虫文件:
+  scrapy genspider qsbk "qiushibaike.com"  【创建了一个名字叫做qsbk的爬虫，并且能爬取的网页只会限制在qiushibaike.com这个域名下】
+6. scrapy crawl 爬虫名字
+
+## 模拟登陆人人网
+1. 想要发送post请求，那么推荐使用'scrapy.FormRequest'方法，可以方便指定表单数据
+2. 如果想在爬虫一开始时候久发送post请求，那么应该重写start_request
