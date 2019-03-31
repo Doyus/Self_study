@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>修改</title>
+</head>
+<body>
+    <h3><a href="">输入id值，修改用户信息>>></a></h3>
+    <form action="{% url 'xiugai' %}" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+                <table border="1" width="400" >
+                 <tr>
+                        <td>id</td><td>姓名</td><td>性别</td><td>年龄</td><td>密码</td>
+
+                 </tr>
+                 <tr>
+                        <td><input type="text" name="idd" value="{{ idb }}">
+                        <td><input type="text" name="namex" value="{{ nameb }}"></td><td><input type="text" name="sexx" value="{{ sexb }}"></td><td><input type="text" name="agex" value="{{ ageb }}"></td><td><input type="text" name="pwdx" value="{{ pwdb }}"></td>
+                 </tr>
+                  <tr><td colspan="5" style="text-align: center;"><input type="submit" value="提交"></td></tr>
+            </table>
+    </form>
+</body>
+</html>

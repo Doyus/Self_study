@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+<br />
+<br />
+<br />
+<center>
+     <select id="a">
+     {% for i in list %}
+        <option value="{{ i.name }}">{{ i.name }}</option>
+     {% endfor %}
+    </select>
+    <select id="b">
+         {% for i in list %}
+            <option value="{{ i.name }}">{{ i.name }}</option>
+         {% endfor %}
+    </select>
+    <select id="c">
+        <option value="value">选择商品</option>
+    </select>
+
+</center>
+        <script type="text/javascript">
+
+
+            // var arr = new Array(4);
+            // arr[0] = ["长治", "平顺", "武乡", "屯留"];
+            // arr[1] = ["运城", "河津", "稷山", "闻喜"];
+            // arr[2] = ["晋城", "泽州", "高平", "阳城"];
+            // arr[3] = ["临汾", "尧都", "翼城", "浮山"];
+
+
+            function select(val) {
+                var c2 = document.getElementById("c2");
+                var childs = c2.childNodes;
+                for(var i = 0 ; i < childs.length ; i++){
+                    c2.removeChild(childs[i]);
+                    i--;
+                }
+
+
+
+                for(var i = 0; i < arr.length; i++) {
+                    var arr1 = arr[i]; //arr1子数组
+                    if(val == arr1[0]) {
+                        for(var j = 1; j < arr1.length; j++) {
+                            var txt = document.createTextNode(arr1[j]);
+                            var option = document.createElement("option");
+                            option.appendChild(txt);
+                            c2.appendChild(option);
+                        }
+                    }
+                }
+            }
+
+        </script>
+</body>
+</html>

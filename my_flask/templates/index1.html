@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>省市联动</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+</script>
+</head>
+<body>
+    <select name="province" id='province'>
+        <option id=''>---</option>
+      <!--   <option value="1">辽宁省</option>
+        <option value="2">山东省</option>
+        <option value="3">外星</option> -->
+    </select>
+    <select id="city">
+        <option id="">请选择</option>
+    </select>
+<script>
+    $(function(){
+        {% for i in S %}
+                var text = '<option value={{ i.id }}>{{ i.id }}{{ i.name }}</option>';
+                $('#province').append(text);
+        {% endfor %}
+
+        $('#province').change(function(){
+
+            $('#city').empty();
+            var s = $('#province').val()
+            console.log(s)
+            // console.log($('#province').val());
+            if(s == '1')
+            {
+                // var text1 = '<option value="024">沈阳市</option>';
+                // var text2 = '<option>大连市</option>';
+                // var text3 = '<option>北京市</option>';
+
+                {% for i in N %}
+                var text1 = '<option value="024">{{ i.name }}</option>';
+                $('#city').append(text1);
+                {% endfor %}
+
+                // console.log(text1,text2);
+            }
+            else if($('#province').val()=='2')
+            {
+                var txt1=" <option >济南市</option>";
+                var txt2=" <option >济宁市</option>";
+                var txt3=" <option >天津市</option>";
+                $("#city").append(txt1,txt2,txt3);
+            }
+            else if($("#province").val()=="3")
+            {
+                var txt1=" <option >火星</option>";
+                var txt2=" <option >彗星星</option>";
+                var txt3=" <option >M78星云</option>";
+
+                $("#city").append(txt1,txt2,txt3);
+            }else
+            {
+                $("#city").append("<option>请选择</option>");
+            }
+        });
+    });
+</script>
+</body>
+</html>

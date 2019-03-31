@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var xhr = new XMLHttpRequest();
+            function getXhr () {
+                try{
+                    return new XMLHttpRequest();
+                }catch(e){
+                    try{
+                        return new ActiveXObject("Msxml2.XMLHTTP")
+                    }catch(e){
+                        try{
+                            return new ActiveXObject("Microsoft.XMLHTTP")
+                        }catch(e){
+                            alter('请更换浏览器')
+                            throw e;
+                        }
+                    }
+                }
+            }
+            var xhr = getXhr();
+            // xhr.open('GET','http://localhost:9999/blog/ajax')
+            xhr.open('POST','http://localhost:9999/blog/ajax')
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.send("a='董宇鹏'&b=98888")
+            // xhr.send()
+            xhr.onreadystatechange=function()
+                {
+                    if (xhr.readyState==4 && xhr.status==200)
+                    {
+                        document.getElementById("myDiv").innerHTML=xhr.responseText;
+                        // console.log(JSON.parse(xhr.responseText).name);
+                    }
+                }
+        }
+    </script>
+</head>
+<body>
+    <h1 id="myDiv"></h1>
+</html>

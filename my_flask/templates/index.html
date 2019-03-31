@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block conent %}
+    <p class="import">
+        我是在子模板中
+    </p>
+
+    {{ super() }}
+
+<center>
+<!-- <form action="/login" method="post" accept-charset="utf-8">
+    <input type="text" name="name"><br>
+    <input type="password" name="pwd"><br>
+    <input type="submit" name="submit">
+</form> -->
+
+ <input type="text" id="name"><br>
+<input type="password" id="pwd"><br>
+<button>提交1</button>
+<div id='index'>
+
+</div>
+
+</center>
+
+
+
+
+
+
+
+
+{% endblock %}
